@@ -25,7 +25,21 @@ export async function createTable() {
   );
 }
 
-export async function insertNewPerson(name) {
+export async function insertNewRandomPerson() {
+  const names = [
+    "Wesley",
+    "Mateus",
+    "Lucas",
+    "Ana",
+    "Luiz",
+    "Gabriela",
+    "Amanda",
+    "Fabiana",
+  ];
+
+  const randomNameIndex = Math.floor(Math.random() * names.length);
+  const name = names[randomNameIndex];
+
   await executeQuery(`INSERT INTO people (name) VALUES ('${name}')`);
 }
 

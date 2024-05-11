@@ -1,5 +1,9 @@
 import express from "express";
-import { createTable, insertNewPerson, findAllPeople } from "./repository.js";
+import {
+  createTable,
+  insertNewRandomPerson,
+  findAllPeople,
+} from "./repository.js";
 
 function buildPeopleList(people) {
   const list = `
@@ -14,7 +18,9 @@ function buildPeopleList(people) {
 const app = express();
 const port = 3000;
 
-app.get("/", async (req, res) => {
+app.get("/", async (_, res) => {
+  await insertNewRandomPerson();
+
   const title = "<h1>Full Cycle Rocks!</h1>";
 
   const people = await findAllPeople();
@@ -27,5 +33,4 @@ app.get("/", async (req, res) => {
 app.listen(port, async () => {
   console.log(`Server running on port ${port}`);
   await createTable();
-  await insertNewPerson("Wesley");
 });
