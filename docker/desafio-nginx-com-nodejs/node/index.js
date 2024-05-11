@@ -15,7 +15,7 @@ const app = express();
 const port = 3000;
 
 app.get("/", async (req, res) => {
-  const title = "<h1>Full Cycle</h1>";
+  const title = "<h1>Full Cycle Rocks!</h1>";
 
   const people = await findAllPeople();
   const list = buildPeopleList(people);
